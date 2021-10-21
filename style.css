@@ -131,7 +131,7 @@ a:active {
   margin-top: 1em;
 }
 
-form{
+.forma{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -139,7 +139,7 @@ form{
   margin-top: 1rem;
 }
 
-form>input{
+.forma>input{
   width: 25%;
   margin-bottom: .5rem;
   padding: 3px;
@@ -163,7 +163,7 @@ textarea{
   font-size: 21px;
 }
 
- form>input:focus{
+ .forma>input:focus{
   outline: none;
   border: none;
   border-bottom: 1px solid black;
@@ -246,10 +246,10 @@ textarea:focus {
     margin: 5rem auto 0rem auto;
   }
 
-  form>input{
+  .forma>input{
     width: 50%;
   }
-  form>textarea{
+  .forma>textarea{
     width: 50%;
     height: 12rem;
   }

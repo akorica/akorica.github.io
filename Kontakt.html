@@ -6,6 +6,17 @@
     <title>Andrej's personal page :)</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init("user_BhIRZq4cnrlwpe6wQHdnI");
+      })();
+    </script>
+
 </head>
 <body>
     
@@ -28,33 +39,60 @@
 
     <hr>
 
-        <form
-        action="https://formsubmit.co/koricaandrej3@gmail.com"
-        method="POST"
-        >
-            <input type="email" name="E-mail" placeholder="E-Mail" required />
+        <div class="forma">
 
-            <input type="text" name="Predmet" placeholder="Subject">
+            <input type="email" name="e-mail" placeholder="E-Mail" required />
+
+            <input type="text" name="subject" placeholder="Subject">
 
             <textarea
-            id="message"
-            name="Poruka"
+            name="message"
             type="text"
             placeholder="Enter your message here..."
             rows="12"></textarea>
 
             <button
-            type="submit"
+            onclick="posalji()";
             class="btn btn-primary"
             style="margin-top: 1rem"
             >
             Send
             </button>
 
-        </form>
+        </div>
         
         <hr style="width: 35%; margin-top: 5rem;">
 
         <div class="map-responsive"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2827.9659001784767!2d13.845919914926762!3d44.86298898137902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477cd338adff6e35%3A0x97f9677c06c5b5c6!2sFakultet%20informatike%20u%20Puli!5e0!3m2!1shr!2shr!4v1634321510636!5m2!1shr!2shr" width="100" height="100" style="border:0;" allowfullscreen="" loading="lazy"></iframe></div>
-</body>
+
+
+        <script>
+            function posalji() {
+                console.log("Pozvana je funkcija za slanje forme");
+                let subject = document.querySelector("input[name='subject']").value;
+                let user_email = document.querySelector("input[name='e-mail']").value;
+                let message = document.querySelector("textarea[name='message']").value;
+                let form_data = { subject, user_email, message };
+                console.log(subject, user_email, message);
+
+      emailjs
+        .send(
+          "service_caqaqkt",
+          "template_6cxqfl4",
+          form_data,
+          "user_BhIRZq4cnrlwpe6wQHdnI"
+        )
+        .then(
+          function (response) {
+            console.log("SUCCESS!", response.status, response.text);
+          },
+          function (error) {
+            console.log("FAILED...", error);
+          }
+        );
+    }
+
+        </script>
+    </body>
+
 </html>
